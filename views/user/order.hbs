@@ -1,0 +1,61 @@
+{{# if products }}
+    {{#each products }}
+       <table id="cart" class="table table-hover table-condensed">
+			<thead>
+				<tr>
+					<th style="width:50%">Product</th>
+					<th style="width:10%">Price</th>
+					<th style="width:8%">Quantity</th>
+					<th style="width:22%" class="text-center">Subtotal</th>
+					<th style="width:10%"></th>
+				</tr>
+			</thead>
+			<tbody>
+
+                {{#each this.items}}
+					<tr>
+						<td data-th="Product">
+							<div class="row">
+								<div class="col-sm-2 hidden-xs"><img src="../../{{this.item.imagePath}}" alt="..." class="img-responsive"/></div>
+								<div class="col-sm-10">
+									<h4 class="nomargin">{{this.item.title}}</h4>
+									<p>{{this.item.description}}</p>
+								</div>
+							</div>
+						</td>
+						<td data-th="Price">${{this.item.price}}</td>
+						<td data-th="Quantity">
+                            <p class="text-center">
+                                {{this.qty}}
+                            </p>
+						</td>
+						<td data-th="Subtotal" class="text-center">${{this.price}}</td>
+						<td class="actions" data-th="">
+
+						</td>
+					</tr>
+			</tbody>
+            {{/each}}
+			<tfoot>
+				<tr class="visible-xs">
+					<td class="text-center"><strong>Total $</strong></td>
+				</tr>
+				<tr>
+					<td class="hidden-xs "><strong>Thanks {{this.name}} for shopping </strong></td>
+
+                    <td colspan="2" class="hidden-xs text-center"><strong>Total Quantity {{this.cart.totalQty}}</strong></td>
+					<td class="hidden-xs text-center"><strong>Total price ${{this.cart.totalPrice}}</strong></td>
+					<td></td>
+				</tr>
+			</tfoot>
+        </table>
+        <hr />
+            {{/each}}
+
+{{else}}
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <h2>There is not orders <a href="/">Go Shopping now</a></h2>
+        </div>
+    </div>
+{{/if}}

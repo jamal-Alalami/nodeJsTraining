@@ -1,0 +1,20 @@
+1- we need to install express module useing express generator useing
+** npm install express-generator -g
+after that we create the file using
+** express nameOfFile --defaultTemplate ==> express shopping-cart --hbs
+then goto the file and install debandences require using
+** npm install
+
+2- run the server using
+** npm start
+we find the server on "localhost:3000"
+
+3- install mongodb backage using
+** npm install --save mongodb
+
+4-     <!-- to handle the input using passport package using npm install --save passport -->
+    <!-- we need package to encrypt password using npm install --save bcrypt-nodejs -->
+    <!-- we need package to flash message using npm install --save connect-flash -->
+    <!-- we need to install passport-local also we can use another stratygy found here http://passportjs.org/docs for google , facebook , etc-->
+    after that we need to configer by create new folder naem config with file name passport.js
+    

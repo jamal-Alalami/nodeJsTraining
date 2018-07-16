@@ -1,0 +1,58 @@
+{{# if products }}
+       <table id="cart" class="table table-hover table-condensed">
+			<thead>
+				<tr>
+					<th style="width:50%">Product</th>
+					<th style="width:10%">Price</th>
+					<th style="width:8%">Quantity</th>
+					<th style="width:22%" class="text-center">Subtotal</th>
+					<th style="width:10%"></th>
+				</tr>
+			</thead>
+			<tbody>
+                {{#each products }}
+					<tr>
+						<td data-th="Product">
+							<div class="row">
+								<div class="col-sm-2 hidden-xs"><img src="../../{{this.item.imagePath}}" alt="..." class="img-responsive"/></div>
+								<div class="col-sm-10">
+									<h4 class="nomargin">{{this.item.title}}</h4>
+									<p>{{this.item.description}}</p>
+								</div>
+							</div>
+						</td>
+						<td data-th="Price">${{this.item.price}}</td>
+						<td data-th="Quantity">
+
+                            <a href="/reduce/{{this.item._id}}"><button class="btn btn-info btn-sm"><i class="fa fa-minus"></i></button></a>
+                            {{this.qty}}
+                            <a href="/increment/{{this.item._id}}"><button class="btn btn-info btn-sm"><i class="fa fa-plus"></i></button></a>
+
+						</td>
+						<td data-th="Subtotal" class="text-center">${{this.price}}</td>
+						<td class="actions" data-th="">
+							<a href="/removeItem/{{this.item._id}}"><button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button></a>
+						</td>
+					</tr>
+			</tbody>
+            {{/each}}
+			<tfoot>
+				<tr class="visible-xs">
+					<td class="text-center"><strong>Total ${{totalPrice}}</strong></td>
+				</tr>
+				<tr>
+					<td><a href="/" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+					<td colspan="2" class="hidden-xs"></td>
+					<td class="hidden-xs text-center"><strong>Total ${{totalPrice}}</strong></td>
+					<td><a href="/checkout" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+				</tr>
+			</tfoot>
+
+       </table>
+{{else}}
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <h2>No Items In Cart</h2>
+        </div>
+    </div>
+{{/if}}

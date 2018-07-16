@@ -1,0 +1,54 @@
+<!-- Start SignUp Section -->
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <h1>Sing Up</h1>
+        {{#if hasErrors}}
+            <div class="alert alert-danger">
+                {{# each messages}}
+                    <p>{{ this }}</p>
+                {{/each}}
+            </div>
+        {{/if}}
+        <form action="/user/signup/?_csrf={{csrfToken}}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">User Name</label>
+                <input type="text" id="name" name="username" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="title">Image</label>
+                <img src="" alt="your image" class="thumbnail img-responsive" id="imgg">
+                <input type="file" id="price" name="myImage" class="form-control" required accept=".jpg, .jpeg, .png" onchange="previewFile()">
+            </div>
+            <script>
+            function previewFile() {
+              var preview = document.getElementById('imgg');
+              var file    = document.querySelector('input[type=file]').files[0];
+              var reader  = new FileReader();
+
+              reader.addEventListener("load", function () {
+                preview.src = reader.result;
+              }, false);
+
+              if (file) {
+                reader.readAsDataURL(file);
+              }
+            }
+            </script>
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+            <button type="submit" class="btn btn-success">Sign Up</button>
+        </form>
+    </div>
+</div>
+<!-- End SignUp Section -->

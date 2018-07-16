@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+        <div id="success" class="alert alert-success" {{#if noMessage}} hidden {{/if}}>
+            {{ successMsg }}
+        </div>
+    </div>
+</div>
+
+<!-- Start Items Section -->
+
+<div class="row">
+
+    {{#each products}} <!-- loop in products -->
+
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="{{this.items.imagePath }}" alt="..." class="img-responsive">
+                <div class="caption">
+                    <h3>{{ this.items.title }}</h3>
+                    <p class="description">{{ this.items.description }}</p>
+                    <div class="clearfix">
+                        <div class="price pull-left">${{ this.items.price }}</div>
+
+                        {{#if this.att}}
+                        <a href="user/removeItems/{{this.items.id}}" class="btn btn-danger pull-right" role="button">Remove</a>
+                        <a href="user/editItems/{{this.items.id}}" class="btn btn-success pull-right" role="button">Edit</a>
+                        {{else}}
+                        <a href="/addToCart/{{this.items.id}}" class="btn btn-success pull-right" role="button">Add To Cart</a>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {{/each}}
+</div>
+<!-- End Items Section -->
